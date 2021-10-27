@@ -5,6 +5,11 @@ import { connect } from "react-redux";
 const CreateToDo = ({ navigation, addTodo }) => {
   const [input, setInput] = useState("");
 
+  const addAndNav = () => {
+    addTodo(input);
+    navigation.navigate("ListToDo");
+  };
+
   return (
     <View>
       <Text>CreateToDo</Text>
@@ -15,15 +20,15 @@ const CreateToDo = ({ navigation, addTodo }) => {
         style={styles.textInput}
       />
       <Text>{input}</Text>
-      <Button title="Create New Todo" onPress={() => addTodo(input)} />
+      <Button title="Create New Todo" onPress={() => addAndNav()} />
     </View>
   );
 };
 
-const mapStateToProps = (state) => {
-  // console.log(state);
-  return {};
-};
+// const mapStateToProps = (state) => {
+//   // console.log(state);
+//   return {};
+// };
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -31,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateToDo);
+export default connect(null, mapDispatchToProps)(CreateToDo);
 
 const styles = StyleSheet.create({
   textInput: {

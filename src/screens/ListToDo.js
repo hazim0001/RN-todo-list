@@ -1,26 +1,35 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import { connect } from "react-redux";
-const ListToDo = () => {
+import Todo from "../components/Todo";
+
+const ListToDo = (props) => {
+  const DATA = props.state;
+
+  const renderTodo = ({ item }) => {
+    // console.log(data);
+    const { id, title, completedTask } = item;
+    return <Todo id={id} title={title} completedTask={completedTask} />;
+  };
+
   return (
     <View>
       <Text>ListToDo</Text>
+      <FlatList
+        data={DATA}
+        renderItem={renderTodo}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  return {};
+  // console.log(state);
+  return { state };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (text) => dispatch({ type: "addTodo", payload: text }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListToDo);
+export default connect(mapStateToProps)(ListToDo);
+// export default ListToDo;
 
 const styles = StyleSheet.create({});
