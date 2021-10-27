@@ -1,0 +1,6 @@
+import { createStore } from "redux";
+import TodoReducer from "../reducers/TodoReducer";
+
+const AppStore = createStore(TodoReducer);
+
+export default AppStore;
