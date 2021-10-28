@@ -1,12 +1,14 @@
-import { Children } from "react";
-
 let counter = 1;
 
-const initialState = [];
+// const initialState = ;
 
-const TodoReducer = (state = initialState, action) => {
+const TodoReducer = (state, action) => {
+  if (typeof state === "undefined") {
+    return (state = []);
+  }
   switch (action.type) {
-    case "addTodo":
+    case "ADDTODO":
+      console.log("from add");
       return [
         ...state,
         { id: counter++, title: action.payload, completedTask: false },
@@ -24,7 +26,7 @@ const TodoReducer = (state = initialState, action) => {
       return state.filter((todo) => todo.id !== action.payload);
 
     default:
-      state;
+      return (state = []);
   }
 };
 

@@ -6,6 +6,7 @@ const CreateToDo = ({ navigation, addTodo }) => {
   const [input, setInput] = useState("");
 
   const addAndNav = () => {
+    console.log("addAndNav");
     addTodo(input);
     navigation.navigate("ListToDo");
   };
@@ -32,7 +33,7 @@ const CreateToDo = ({ navigation, addTodo }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTodo: (text) => dispatch({ type: "addTodo", payload: text }),
+    addTodo: (text) => dispatch({ type: "ADDTODO", payload: text }),
   };
 };
 

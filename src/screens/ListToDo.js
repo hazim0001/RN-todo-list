@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import Todo from "../components/Todo";
 
 const ListToDo = (props) => {
-  const DATA = props.state;
+  console.log(props);
+  const DATA = props.todos;
 
   const renderTodo = ({ item }) => {
     // console.log(data);
@@ -25,8 +26,8 @@ const ListToDo = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state);
-  return { state };
+  console.log("state", state);
+  return { todos: state.todo };
 };
 
 export default connect(mapStateToProps)(ListToDo);
