@@ -1,11 +1,10 @@
 let counter = 1;
 
-const initialState = [];
-
 const PostReducer = (state, action) => {
   if (typeof state === "undefined") {
     return (state = []);
   }
+  console.log("from post reducer");
   switch (action.type) {
     case "ADDPOST":
       return [
@@ -18,9 +17,10 @@ const PostReducer = (state, action) => {
       ];
     case "deletepost":
       return state.filter((post) => post.id !== action.payload);
-
+    case "fetch":
+      console.log("from fetch", action.payload);
     default:
-      return (state = []);
+      return state;
   }
 };
 

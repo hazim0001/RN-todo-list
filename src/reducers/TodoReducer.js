@@ -8,7 +8,6 @@ const TodoReducer = (state, action) => {
   }
   switch (action.type) {
     case "ADDTODO":
-      console.log("from add");
       return [
         ...state,
         { id: counter++, title: action.payload, completedTask: false },
@@ -26,7 +25,7 @@ const TodoReducer = (state, action) => {
       return state.filter((todo) => todo.id !== action.payload);
 
     default:
-      return (state = []);
+      return state;
   }
 };
 

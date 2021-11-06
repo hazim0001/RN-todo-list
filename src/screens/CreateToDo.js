@@ -6,7 +6,6 @@ const CreateToDo = ({ navigation, addTodo }) => {
   const [input, setInput] = useState("");
 
   const addAndNav = () => {
-    console.log("addAndNav");
     addTodo(input);
     navigation.navigate("ListToDo");
   };
@@ -25,11 +24,6 @@ const CreateToDo = ({ navigation, addTodo }) => {
     </View>
   );
 };
-
-// const mapStateToProps = (state) => {
-//   // console.log(state);
-//   return {};
-// };
 
 const mapDispatchToProps = (dispatch) => {
   return {

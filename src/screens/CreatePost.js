@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { connect } from "react-redux";
+import AppStore from "../store/AppStore";
 
 const CreatePost = ({ navigation, addPost }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  const fetchPost = async (dispatch, getState) => {
+    setTimeout(() => {
+      dispatch({ type: "fetch", payload: { state: getState() } });
+    }, 3000);
+  };
   const addAndNavigate = () => {
+    AppStore.dispatch(fetchPost);
     addPost(title, content);
     navigation.navigate("ListPost");
   };

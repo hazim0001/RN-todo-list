@@ -9,7 +9,6 @@ import AppStore from "./src/store/AppStore";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  console.log(AppStore.getState());
   return (
     <NavigationContainer>
       <Provider store={AppStore}>
